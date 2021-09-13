@@ -65,3 +65,23 @@ EOF
 systemctl daemon-reload
 systemctl start prometheus
 systemctl enable prometheus
+
+#Sau khi cài xong thì add khai báo các exporter của các node vào file /etc/prometheus/prometheus.yml
+  
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: 'node_1'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['182.168.x.x:9100']
+  
+#restart service
+systemctl restart prometheus
+
+  
