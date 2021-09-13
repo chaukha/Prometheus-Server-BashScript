@@ -76,10 +76,11 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
       - targets: ['localhost:9090']
+
   - job_name: 'node_1'
     scrape_interval: 5s
     static_configs:
-      - targets: ['182.168.x.x:9100']
+      - targets: ['182.168.20.33:9100']
   
 #restart service
 systemctl restart prometheus
