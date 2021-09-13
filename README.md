@@ -1,4 +1,7 @@
 # Prometheus-Server-BashScript
+
+Scripts cài Prometheus Server cho ông nào lười, only Prometheus Server thôi. Node_Exporter nằm bên 1 script khác
+
 #Cài đặt WGET
 yum install wget -y
 #Tạo User cho Prometheus
