@@ -1,6 +1,8 @@
 #!bin/bash
+read -n 1 -r -s -p $'Bam phim bat ky de cai dat Wget...\n'
 #install wget
 yum install wget -y
+read -n 1 -r -s -p $'Bam phim bat ky de add user...\n'
 #add user
 useradd --no-create-home --shell /bin/false prometheus
 mkdir /etc/prometheus
@@ -8,6 +10,7 @@ mkdir /var/lib/prometheus
 chown prometheus:prometheus /etc/prometheus
 chown prometheus:prometheus /var/lib/prometheus
 cd /opt
+read -n 1 -r -s -p $'Bam phim bat ky de cai dat Prometheus...\n'
 wget https://github.com/prometheus/prometheus/releases/download/v2.27.1/prometheus-2.27.1.linux-amd64.tar.gz -O prometheus.tar.gz
 tar xvf prometheus.tar.gz 
 mv prometheus-2.27.1.linux-amd64 prometheus
@@ -26,6 +29,7 @@ chown -R prometheus:prometheus /etc/prometheus/console_libraries
 
 rm -rf prometheus*
 cd -
+read -n 1 -r -s -p $'Bam phim bat ky de add systemd...\n'
 cat <<EOF > /etc/prometheus/prometheus.yml
 global:
   scrape_interval: 15s
@@ -60,3 +64,4 @@ systemctl daemon-reload
 systemctl start prometheus
 systemctl enable prometheus
 
+echo "Hoan thanh! Vui long truy cap htttp://localhost:9090"
