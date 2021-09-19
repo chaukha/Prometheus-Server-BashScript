@@ -1,4 +1,11 @@
 #!bin/bash
+#Tat firewall
+read -n 1 -r -s -p $'Bam phim bat ky de tat firewall...\n'
+sed -i 's/\(^SELINUX=\).*/\SELINUX=disabled/' /etc/sysconfig/selinux
+sed -i 's/\(^SELINUX=\).*/\SELINUX=disabled/' /etc/selinux/config
+setenforce 0
+systemctl stop firewalld
+systemctl disable firewalld
 read -n 1 -r -s -p $'Bam phim bat ky de cai dat Wget...\n'
 #install wget
 yum install wget -y
